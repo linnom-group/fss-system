@@ -1,0 +1,10 @@
+RewriteEngine on
+
+RewriteCond %{HTTPS}::%{HTTP_HOST} ^off::(?:www\.)?(.+)$
+RewriteRule ^ https://www.%1%{REQUEST_URI} [NE,L,R]
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(.*)$ public/$1 [L]
+</IfModule>
+
